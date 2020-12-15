@@ -78,17 +78,26 @@ export default function TodoList() {
             <div style={{background:"white", width:"49%", float: "left"}}>
                 <label for="filterby">Filter By:</label>
 
-                <select onChange={filterBy}  name="fiterby" id="filterby">
-                    <option value="default">Default</option>
-                    <option value="week">Week Wise</option>
-                    <option value="month">Month Wise</option>
-                    <option value="year">Year Wise</option>
+                <label for="filterby">Week:</label>
+                <select name="Month" id="filterby">
+                    {
+                        ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map(item => ( <option>{item}</option>))
+                    }
                 </select>
 
-                <label for="start">Month:</label>
+                <label for="filterby">Month:</label>
+                <select name="Month" id="filterby">
+                    {
+                        ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].map(item => ( <option>{item}</option>))
+                    }
+                </select>
 
-                    <input type="month" id="start" name="start"
-                        min="2018-03" value="2018-05"></input>
+                <label for="filterby">Year:</label>
+                <select name="Year" id="filterby">
+                    {
+                        [2014, 2015, 2016, 2017, 2018, 2019, 2020].map(item => ( <option>{item}</option>))
+                    }
+                </select>
             </div>
             <Todo style={{cursor:"pointer"}} todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}  updatedTodo={updatedTodo} sortBy={sortBy} />
             
