@@ -35,12 +35,12 @@ export default function TodoList() {
         })
         setTodos(updatedTodos)
     }
-
+    // cursor: pointer;
     return (
         <div>
-            <h1>something</h1>
+            <h1>Add daily Task</h1>
             <TodoForm onSubmit={addTodo} />
-            <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}  updatedTodo={updatedTodo} />
+            <Todo style={{cursor:"pointer"}} todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}  updatedTodo={updatedTodo} />
         </div>
     )
 }
