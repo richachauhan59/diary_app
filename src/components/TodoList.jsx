@@ -4,6 +4,8 @@ import TodoForm from './TodoForm'
 
 export default function TodoList() {
     const [todos, setTodos] = useState([])
+    const [newTodos, setNewTodos] = useState([])
+    const [status, setStatus] = useState(false)
     
     const addTodo = (todo) => {
         if(!todo.text || /^\s*$/.test(todo.test)){
@@ -47,23 +49,26 @@ export default function TodoList() {
     }
 
     const filterBy = (e) => {
-        const arr_copy=[...todos]
-        // if(e.target.value === "week"){
-        //     setTodos(arr_copy.reverse())
+        const arr_copy =  todos
+        console.log(e.target.value, "target")
+        console.log(todos)
+        console.log(arr_copy, "copy")
+        // let date = date.split('-')
+        // console.log(date, "date")
+        // for(let i = 0 ; i < todos.length ; i++){
+            
         // }
-        // else if(e.target.value === "month"){
-        //     setTodos(arr_copy.reverse())
-        // }
-        // if(e.target.value === "year"){
-
-            // setTodos(arr_copy.reverse())
-        // }
-        console.log(e.target.value)
-       
         // console.log( todos.map(item => Number(item.date.split('-')[0])))
-            let dateFilter = arr_copy.filter(todo => todo.date.split('-')[0] == e.target.value )
-            setTodos(dateFilter)
-        
+            let dateFilter = arr_copy.filter(todo => todo.date.split('-')[0] == e.target.value)
+            if(dateFilter.length == 0){
+                setStatus(true)
+            }
+            else{
+                setStatus(false)
+            }
+            setNewTodos(dateFilter)
+            console.log(newTodos)
+            
 
     }
 
@@ -87,14 +92,14 @@ export default function TodoList() {
                 <label for="filterby">Week:</label>
                 <select onChange={filterBy} name="week" id="filterby">
                     {
-                        ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map(item => ( <option value={item}>{item}</option>))
+                        ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((item, index) => ( <option value={index}>{item}</option>))
                     }
                 </select>
 
                 <label for="filterby">Month:</label>
                 <select onChange={filterBy} name="Month" id="filterby">
                     {
-                        ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].map(item => ( <option value={item} >{item}</option>))
+                        ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].map((item, index) => ( <option value={index} >{item}</option>))
                     }
                 </select>
 
@@ -105,8 +110,15 @@ export default function TodoList() {
                     }
                 </select>
             </div>
-            <Todo style={{cursor:"pointer"}} todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}  updatedTodo={updatedTodo} sortBy={sortBy} />
+            {
+                status ? <p>No data is found</p> 
+                :
             
+                newTodos.length > 0 ? <Todo style={{cursor:"pointer"}}  todos={newTodos} completeTodo={completeTodo} removeTodo={removeTodo}  updatedTodo={updatedTodo} sortBy={sortBy} />
+                :
+                <Todo style={{cursor:"pointer"}}  todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}  updatedTodo={updatedTodo} sortBy={sortBy} />
+            
+            }
         </div>
     )
 }
