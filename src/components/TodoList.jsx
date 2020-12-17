@@ -54,55 +54,6 @@ export default function TodoList() {
         }
     }
 
-    // const filterBy = (e) => {
-    //     e.preventDefault()
-    //     const arr_copy =  todos
-    //     // console.log(todos)
-    //     // console.log(arr_copy, "copy")
-    //     // let date = date.split('-')
-    //     // console.log(date, "date")
-    //     // for(let i = 0 ; i < todos.length ; i++){
-            
-    //     // }
-    //     // console.log( todos.map(item => Number(item.date.split('-')[0])))
-        
-    //     // if(month == "Default"){
-    //     //     setStatus(false)
-    //     //     setNewTodos(arr_copy)
-    //     // }
-    //     // else{
-            
-    //     //     let monthFilter = arr_copy.filter(todo => todo.date.split('-')[1] == month)
-    //     //     console.log(monthFilter)
-    //     //     if(monthFilter.length == 0){
-    //     //         setStatus(true)
-    //     //     }
-    //     //     else{
-    //     //         setStatus(false)
-    //     //     }
-    //     //     setNewTodos(monthFilter)
-            
-    //     // }
-    //     // if(year == "Default"){
-    //     //     setStatus(false)
-    //     //     setNewTodos(arr_copy)
-    //     // }
-    //     // else{
-    //     //     let yearFilter = arr_copy.filter(todo => todo.date.split('-')[0] == year)
-    //     //     console.log(yearFilter)
-    //     //     if(yearFilter.length == 0){
-    //     //         setStatus(true)
-    //     //     }
-    //     //     else{
-    //     //         setStatus(false)
-    //     //     }
-    //     //     setNewTodos(yearFilter)
-            
-    //     // }
-            
-
-    // }
-
     const handleWeek = (e) => {
         setWeek(e.target.value)
         const arr_copy =  todos
@@ -182,42 +133,46 @@ export default function TodoList() {
             </div>
             
             <div className="todo-app" style={{width:"90%", minHeight:"200px",height:"auto"}}>
-                <div className="todo-header" style={{float: "left"}}>
-                    <label className="label-header" for="sortby">Sort By:</label>
+                <div className="header-container">
+                    <div className="todo-header" style={{float: "left"}}>
+                        <label className="label-header" for="sortby">Sort By:</label>
 
-                    <select onChange={sortBy} name="sortby" id="sortby">
-                        <option value="newest">Newest First</option>
-                        <option value="oldest">Oldest First</option>
-                    </select>
-                </div>
+                        <select onChange={sortBy} name="sortby" id="sortby">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                        </select>
+                    </div>
                 
-                <div className="todo-header" style={{float: "right", marginBottom:"30px"}}>
-                    <label className="label-header"  for="filterby">Filter By:</label>
-                    
-                    <label className="filter-header" for="filterbyweek">Week:</label>
-                    <select onChange={handleWeek} name="week" id="filterbyweek">
-                        <option value="Default">Default</option>
-                        {
-                            ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map((item, index) => ( <option value={index}>{item}</option>))
-                        }
-                    </select>
+                    <div className="todo-header" style={{float: "right", marginBottom:"30px"}}>
+                        <label className="label-header"  for="filterby">Filter By:</label>
+                        
+                        <label className="filter-header" for="filterbyweek">Week:</label>
+                        <select onChange={handleWeek} name="week" id="filterbyweek">
+                            <option value="Default">Default</option>
+                            {
+                                ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map((item, index) => ( <option value={index}>{item}</option>))
+                            }
+                        </select>
 
-                    <label className="filter-header" for="filterbymonth">Month:</label>
-                    <select onChange={handleMonth} name="Month" id="filterbymonth">
-                        <option value="Default">Default</option>
-                        {
-                            ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].map((item, index) => ( <option value={index} >{item}</option>))
-                        }
-                    </select>
-                    <label className="filter-header" for="filterbyyear">Year:</label>
-                    <select onChange={handleYear} name="Year" id="filterbyyear">
-                        {
-                            ["Default", 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020].map(item => ( <option value={item} >{item}</option>))
-                        }
-                    </select>
+                        <label className="filter-header" for="filterbymonth">Month:</label>
+                        <select onChange={handleMonth} name="Month" id="filterbymonth">
+                            <option value="Default">Default</option>
+                            {
+                                ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].map((item, index) => ( <option value={index} >{item}</option>))
+                            }
+                        </select>
+                        <label className="filter-header" for="filterbyyear">Year:</label>
+                        <select onChange={handleYear} name="Year" id="filterbyyear">
+                            {
+                                ["Default", 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020].map(item => ( <option value={item} >{item}</option>))
+                            }
+                        </select>
+                    </div>
                 </div>
+                <div className="card-container">
+
                 {
-                    status ? <p>No data is found</p> 
+                    status ? <p style={{color: "#fffefe", fontSize: "xx-large"}} >No data is found. Please enter the Data.</p> 
                     :
                 
                     newTodos.length > 0 ? <Todo style={{cursor:"pointer"}}  todos={newTodos} completeTodo={completeTodo} removeTodo={removeTodo}  updatedTodo={updatedTodo} sortBy={sortBy} />
@@ -225,6 +180,7 @@ export default function TodoList() {
                     <Todo style={{cursor:"pointer"}}  todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}  updatedTodo={updatedTodo} sortBy={sortBy} />
                 
                 }
+                </div>
             </div>
         </div>
     )

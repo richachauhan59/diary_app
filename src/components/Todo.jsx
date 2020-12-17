@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import TodoForm from './TodoForm'
-import TodoList from './TodoList'
 import {RiCloseCircleLine} from 'react-icons/ri'
 import {TiEdit} from 'react-icons/ti'
 
@@ -23,23 +22,27 @@ function Todo({todos, completeTodo, removeTodo, updatedTodo }) {
     }
 
     return todos.map((todo, index) => (
-        <div style={{cursor:"pointer"}} className={todo.isComplete ? 'todo-row complete' : 'todo-row'} key={index} >
-            <div key={todo.id} onClick={() => completeTodo(todo.id)} >
+        <div className="card" style={{cursor:"pointer",width: "98%"}} className="todo-row" key={index} >
+            <div className="card-header">
+                <h6 className="todo-date">
+                    {todo.date}
+                </h6>
+
+                <h6 className="icons">
+                    <RiCloseCircleLine
+                    onClick={() => removeTodo(todo.id)}
+                    className='delete-icon'
+                    />
+                    <TiEdit
+                    onClick={() => setEdit({id: todo.id, value: todo.text})}
+                    className='edit-icon' 
+                    />
+                </h6>
+            </div>
+            <div className="card-body" key={todo.id} >
                 {todo.text}
             </div>
-            <div>
-                {todo.date}
-            </div>
-            <div className="icons">
-                <RiCloseCircleLine
-                onClick={() => removeTodo(todo.id)}
-                className='delete-icon'
-                />
-                <TiEdit
-                onClick={() => setEdit({id: todo.id, value: todo.text})}
-                className='edit-icon' 
-                />
-            </div>
+            
         </div>
     ))
 }
