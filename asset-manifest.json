@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/dairy_app/static/css/main.4fe982a5.chunk.css",
+    "main.js": "/dairy_app/static/js/main.ada66682.chunk.js",
+    "main.js.map": "/dairy_app/static/js/main.ada66682.chunk.js.map",
+    "runtime-main.js": "/dairy_app/static/js/runtime-main.32b9c243.js",
+    "runtime-main.js.map": "/dairy_app/static/js/runtime-main.32b9c243.js.map",
+    "static/js/2.3142109f.chunk.js": "/dairy_app/static/js/2.3142109f.chunk.js",
+    "static/js/2.3142109f.chunk.js.map": "/dairy_app/static/js/2.3142109f.chunk.js.map",
+    "static/js/3.d0498573.chunk.js": "/dairy_app/static/js/3.d0498573.chunk.js",
+    "static/js/3.d0498573.chunk.js.map": "/dairy_app/static/js/3.d0498573.chunk.js.map",
+    "index.html": "/dairy_app/index.html",
+    "static/css/main.4fe982a5.chunk.css.map": "/dairy_app/static/css/main.4fe982a5.chunk.css.map",
+    "static/js/2.3142109f.chunk.js.LICENSE.txt": "/dairy_app/static/js/2.3142109f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.32b9c243.js",
+    "static/js/2.3142109f.chunk.js",
+    "static/css/main.4fe982a5.chunk.css",
+    "static/js/main.ada66682.chunk.js"
+  ]
+}
