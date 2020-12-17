@@ -42,9 +42,8 @@ export default function TodoForm(props) {
                     />
                 </div>
                 <div>
-                <input 
-                type="text" 
-                placeholder="add todo" 
+                <textarea rows="4" cols="50"
+                placeholder="Enter text here..." 
                 value={input} name="text" 
                 className="todo-input" 
                 onChange={handleChange}
